@@ -11,6 +11,8 @@ async function GetProducts() {
         // console.log(data);
 
         row.innerHTML = "";
+        console.log(data);
+        
 
         data.map((product, id) => {
             row.innerHTML += `<tr>
@@ -23,7 +25,7 @@ async function GetProducts() {
                 </td>
 
                 <td>
-                    <p>${product.Description[0].children[0].text}</p>
+                    <p>${product.Desciription[0].children[0].text}</p>
                 </td>
 
                 <td class="status"><span class="${product.productStatus}">${product.productStatus ? "Bor" : "Yo'q"}</span></td>
@@ -89,7 +91,7 @@ function CreatProduct(event) {
             data: {
                 productName,
                 productID,
-                Description: [{
+                Desciription: [{
                     "type": "paragraph",
                     "children": [{
                         "type": "text",
