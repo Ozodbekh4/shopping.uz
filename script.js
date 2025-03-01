@@ -190,7 +190,16 @@ function EditProduct(event) {
 }
 
 // delete knopkasi bosilganda aynan o'sha mahsulot ekrandan va APIdan o'chiriladi
-function Delete(id) {}
+function Delete(id) {
+    // console.log(id);
+    fetch(`${API}/products/${id}`, {
+        method: "Delete"
+    }).then(() => {
+        GetProducts();
+    }).catch((error) => {
+        console.log(error);
+    })
+}
 
 //ekranni boshqa tomoniga bosilganda options dropdown yopiladi
 document.addEventListener("click", function (event) {
