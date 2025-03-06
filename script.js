@@ -5,6 +5,7 @@ const header_model_close = document.querySelector(".header_modal_close");
 const header_modal_close_2 = document.querySelector(".header_modal_close_2");
 const options_content_edit = document.querySelector(".options_content_edit");
 
+
 async function GetProducts() {
 
     try {
@@ -254,6 +255,9 @@ header_modal_close_2.addEventListener("click", function () {
 
 // qo'shish modali ichidagi qo'shish tugmasi bosilganda ma'lumotlarni strapiga qo'shadi va ekranni yangilab ma'lumotlarni ekranga ko'rsatadi
 function CreatProduct(event) {
+
+    let isLoading = false;
+    
     event.preventDefault();
     const productName = document.querySelector("#productName").value;
     const productID = document.querySelector("#productCode").value;
@@ -262,6 +266,14 @@ function CreatProduct(event) {
     const purePrice = document.querySelector("#PurePrice").value;
     const higherPrice = document.querySelector("#higherPrice").value;
     const Price = document.querySelector("#Price").value;
+
+    if(!isLoading){
+        let loader = document.createElement("span");
+        loader.classList.add("loader");
+        console.log(loader);
+        
+        document.querySelector(".add").appendChild(loader);
+    }
 
     fetch(`${API}/products`, {
         method: "Post",
@@ -293,6 +305,7 @@ function CreatProduct(event) {
         console.log(res);
         closeModal();
         GetProducts();
+        document.querySelector(".add").children[0].remove();
     }).catch((error) => {
         console.log(error);
     })
@@ -387,7 +400,7 @@ function Search(event) {
 
                 } else {
                     console.log("Search result:", data.data, length);
-                    row.innerHTML = "<td colspan='7' class='notFound'>Mahsulot Topilmadi</td>";
+                    row.innerHTML = "<td colspan='7' class='notFound'>Mahsulot Topilmadi !</td>";
                 }
 
             })

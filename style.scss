@@ -211,17 +211,17 @@ $color-Stripes: #F4F7FC;
                         font-weight: 500;
                         color: #171c26;
 
-                        &:last-of-type{
+                        &:last-of-type {
                             display: flex;
                             justify-content: space-between;
 
-                            .options{
+                            .options {
                                 position: relative;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
 
-                                .options_icon{
+                                .options_icon {
                                     width: 16px;
                                     height: 16px;
                                     display: flex;
@@ -235,12 +235,12 @@ $color-Stripes: #F4F7FC;
                                     box-sizing: content-box;
                                     border-radius: 8px;
 
-                                    &:hover{
+                                    &:hover {
                                         border-color: #bfbfbf;
                                     }
                                 }
 
-                                .options_content{
+                                .options_content {
                                     position: absolute;
                                     top: 100%;
                                     left: -250%;
@@ -255,7 +255,7 @@ $color-Stripes: #F4F7FC;
                                     box-shadow: 0 0 0 1px rgba(152, 161, 178, 10%), 0 15px 35px -5px rgba(17, 24, 38, 20%), 0 5px 15px 0 rgba(0, 0, 0, 8%);
                                     display: none;
 
-                                    button{
+                                    button {
                                         display: flex;
                                         justify-content: space-between;
                                         align-items: center;
@@ -269,7 +269,7 @@ $color-Stripes: #F4F7FC;
                                         background-color: transparent;
                                         padding: 10px 4px;
 
-                                        span{
+                                        span {
                                             width: 16px;
                                             height: 16px;
                                             display: flex;
@@ -277,13 +277,13 @@ $color-Stripes: #F4F7FC;
                                             align-items: center;
                                         }
 
-                                        &:last-of-type{
+                                        &:last-of-type {
                                             color: #d12953;
                                         }
                                     }
                                 }
 
-                                .active{
+                                .active {
                                     display: flex;
                                 }
                             }
@@ -368,7 +368,7 @@ $color-Stripes: #F4F7FC;
                     }
                 }
 
-                .notFound{
+                .notFound {
                     color: red;
                     font-size: 22px;
                     text-align: center;
@@ -535,7 +535,7 @@ $color-Stripes: #F4F7FC;
 
                         button {
                             width: 100%;
-                            max-width: 80px;
+                            max-width: 120px;
                             border-radius: 6px;
                             padding: 10px 12px;
                             display: flex;
@@ -562,8 +562,50 @@ $color-Stripes: #F4F7FC;
                                     opacity: 0.7;
                                 }
 
-                                .loader{
-                                    
+                                .loader {
+                                    width: 12px;
+                                    height: 12px;
+                                    border-radius: 50%;
+                                    position: relative;
+                                    animation: rotate 1s linear infinite
+                                }
+
+                                .loader::before {
+                                    content: "";
+                                    box-sizing: border-box;
+                                    position: absolute;
+                                    inset: 0px;
+                                    border-radius: 50%;
+                                    border: 3px solid #FFF;
+                                    animation: prixClipFix 2s linear infinite;
+                                }
+
+                                @keyframes rotate {
+                                    100% {
+                                        transform: rotate(360deg)
+                                    }
+                                }
+
+                                @keyframes prixClipFix {
+                                    0% {
+                                        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+                                    }
+
+                                    25% {
+                                        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+                                    }
+
+                                    50% {
+                                        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+                                    }
+
+                                    75% {
+                                        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+                                    }
+
+                                    100% {
+                                        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+                                    }
                                 }
                             }
                         }
